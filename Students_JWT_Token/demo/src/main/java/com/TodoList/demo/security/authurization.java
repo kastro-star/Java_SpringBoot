@@ -43,12 +43,12 @@ public class authurization {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()  // ✅ FIRST
-                        .requestMatchers("/auth/**").permitAll()                 // ✅ SECOND
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()  T
+                        .requestMatchers("/auth/**").permitAll()                 
                         .anyRequest().authenticated()
                 )
-                .formLogin(AbstractHttpConfigurer::disable)   // ✅ ADD THIS
-                .httpBasic(AbstractHttpConfigurer::disable)   // ✅ ADD THIS
+                .formLogin(AbstractHttpConfigurer::disable)   
+                .httpBasic(AbstractHttpConfigurer::disable)   
                 .addFilterBefore(filtersuser, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
